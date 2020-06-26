@@ -124,9 +124,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # #allow access to all domains
-# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
-       'http://localhost:8080',
-)
+# CORS_ORIGIN_ALLOW_ALL = False
+# CORS_ORIGIN_WHITELIST = (
+#        'http://localhost:8080',
+# )
