@@ -4,7 +4,7 @@ const entrySchema = new Schema({
     title: String,
     body: String,
     tag: [[String]],
-    img: File,
+    img: String,
     username: String,
 }, {timestamps: true}
 )

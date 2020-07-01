@@ -4,9 +4,9 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
-const User = require('./models/users.js')
-const bcrypt = require('bcyrpt')
-const jwt = require('jsonwebtoken')
+// const User = require('./models/users.js')
+// const bcrypt = require('bcyrpt')
+// const jwt = require('jsonwebtoken')
 
 require('dotenv').config();
 
@@ -14,7 +14,7 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 3000
 const entriesController = require('./controllers/entries.js')
-const usersController = require('./controllers/users/js')
+const usersController = require('./controllers/users.js')
 const db = mongoose.connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017'
 

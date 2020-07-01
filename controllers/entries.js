@@ -62,7 +62,7 @@ router.delete('/:id', auth, async (req, res) => {
 
 ////Update Route:
 
-router.put('/:id', auth, async, (req, res) => {
+router.put('/:id', auth, async (req, res) => {
     try {
         const updatedEntry = await Entry.findByIdAndUpdate(
             req.params.id,

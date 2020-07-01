@@ -85,7 +85,7 @@ router.post('/validToken', async (req, res) => {
     }
 })
 
-router.get('/', auth, async, (req, res) => {
+router.get('/', auth, async (req, res) => {
     const user = await User.findById(req.user)
     res.json({
         username: user.username,
