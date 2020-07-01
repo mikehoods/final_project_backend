@@ -13,7 +13,7 @@ require('dotenv').config();
 ///////////GLOBALS///////////
 
 const PORT = process.env.PORT || 3000
-const entriesController = require('./controllers/restaurants.js')
+const entriesController = require('./controllers/entries.js')
 const usersController = require('./controllers/users/js')
 const db = mongoose.connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017'
