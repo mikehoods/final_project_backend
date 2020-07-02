@@ -51,7 +51,7 @@ router.get('/', async (req, res) => {
 
 ////Delete Route: 
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
     try {
         const deletedEntry = await Entry.findByIdAndDelete(req.params.id)
         res.status(200).json(deletedEntry)
