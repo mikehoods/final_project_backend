@@ -28,7 +28,7 @@ const auth = (req, res, next) => {
 
 ////Create Route:
 
-router.post('/', auth, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const newEntry = {...req.body, username: req.user.username}
         const createdEntry = await Entry.create(newEntry)
@@ -40,7 +40,7 @@ router.post('/', auth, async (req, res) => {
 
 ////Read Route:
 
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const entries = await Entry.find({username: req.user.username})
         res.status(200).json(entries)
@@ -51,7 +51,7 @@ router.get('/', auth, async (req, res) => {
 
 ////Delete Route: 
 
-router.delete('/:id', auth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const deletedEntry = await Entry.findByIdAndDelete(req.params.id)
         res.status(200).json(deletedEntry)
@@ -62,7 +62,7 @@ router.delete('/:id', auth, async (req, res) => {
 
 ////Update Route:
 
-router.put('/:id', auth, async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const updatedEntry = await Entry.findByIdAndUpdate(
             req.params.id,
