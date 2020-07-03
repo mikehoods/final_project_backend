@@ -9,6 +9,6 @@ const entrySchema = new Schema({
 }, {timestamps: true}
 )
 
-const Entry = model('entry', entrySchema)
+const Entry = model('Entry', entrySchema)
 
 module.exports = Entry

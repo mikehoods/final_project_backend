@@ -4,9 +4,12 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
-const User = require('./models/users.js')
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
+const bodyParser = require('body-parser')
+const jwt = require("express-jwt")
+const jwksRsa = require("jwks-rsa")
+// const User = require('./models/users.js')
+// const jwt = require('jsonwebtoken')
+// const bcrypt = require('bcrypt')
 
 require('dotenv').config();
 
@@ -32,12 +35,15 @@ db.on('open', ()=> {
 ///////////MIDDLEWARE///////////
 
 app.use(cors())
+app.use(bodyParser.json())
 app.use(express.json())
+app.use(express.urlencoded({extended: true}));
 app.use('/entries/', entriesController)
 app.use('/users/', usersController)
 
 ///Reroute to /entries
 app.get('/', (req, res) => {
+    console.log("michael")
     res.redirect('/entries')
 })
 
