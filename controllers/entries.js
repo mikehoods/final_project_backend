@@ -33,8 +33,6 @@ const checkJwt = jwt({
 
 router.post('/', async (req, res) => {
     try {
-        console.log("michael")
-        console.log(req.body.post)
         const createdEntry = Entry.create(req.body.post)
         res.status(200).json(createdEntry)
     } catch(error) {
@@ -42,24 +40,14 @@ router.post('/', async (req, res) => {
     }
 })
 
-// router.post('/', (req, res) => {
-//     console.log(req.body);
-//     Entry.create(req.body).then((createdEntry) => {
-//         res.json(createdEntry);
-//     }).catch((error) => {
-//         res.status(500);
-//         res.json(error);
-//     });
-// });
-
 ////Read Route:
 
 router.get('/', async (req, res) => {
     try {
-        // console.log(req.user.username)
         const entries = Entry.find({}, (errors, entries)=> {
             res.status(200).json(entries)
         })
+        return entries
     } catch(error) {
         res.status(400).json(error)
     }
@@ -67,10 +55,13 @@ router.get('/', async (req, res) => {
 
 ////Show Route:
 
-router.get('/entries/:id', checkJwt, (req, res) => {
-    const id = Number(req.params.id);
-    const entry = entries.find(entry => entry.id === id);
-    res.send(entry);
+router.get('/:id', async (req, res) => {
+    try {
+        const entry =  await Entry.findById(req.params.id)
+        res.status(200).json(entry)
+    } catch(error) {
+        res.status(400).json(error)
+    }
   });
 
 ////Delete Route: 
@@ -90,7 +81,7 @@ router.put('/:id', async (req, res) => {
     try {
         const updatedEntry = await Entry.findByIdAndUpdate(
             req.params.id,
-            req.body
+            req.body.post
         )
         res.status(200).json(updatedEntry)
     } catch(error) {
