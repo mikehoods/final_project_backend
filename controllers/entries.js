@@ -44,7 +44,8 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const entries = Entry.find({}, (errors, entries)=> {
+        console.log(req.body)
+        const entries = Entry.find({username: "mhood82"}, (errors, entries)=> {
             res.status(200).json(entries)
         })
         return entries
