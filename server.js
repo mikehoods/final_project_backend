@@ -7,9 +7,6 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const jwt = require("express-jwt")
 const jwksRsa = require("jwks-rsa")
-// const User = require('./models/users.js')
-// const jwt = require('jsonwebtoken')
-// const bcrypt = require('bcrypt')
 
 require('dotenv').config();
 
@@ -17,7 +14,6 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 3000
 const entriesController = require('./controllers/entries.js')
-const usersController = require('./controllers/users.js')
 const db = mongoose.connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017'
 
@@ -39,11 +35,9 @@ app.use(bodyParser.json())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
 app.use('/entries/', entriesController)
-app.use('/users/', usersController)
 
 ///Reroute to /entries
 app.get('/', (req, res) => {
-    console.log("michael")
     res.redirect('/entries')
 })
 
