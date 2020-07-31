@@ -15,7 +15,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3000
 const entriesController = require('./controllers/entries.js')
 const db = mongoose.connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017'
+const DB_URI = process.env.DB_URI || 'mongodb://localhost:27017'
 
 ///////////DATABASE CONNECT///////////
 
