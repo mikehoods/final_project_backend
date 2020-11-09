@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000
 const entriesController = require('./controllers/entries.js')
 
 ///////////DATABASE CONNECT///////////
-mongoose.connect('mongodb+srv://heroku_r5krpc15:diary@dear-diary.r6aqw.mongodb.net/heroku_r5krpc15?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://PlantManATX:plants@dear-diary.r6aqw.mongodb.net/entriesDB?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
