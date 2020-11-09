@@ -5,8 +5,6 @@ const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const jwt = require("express-jwt")
-const jwksRsa = require("jwks-rsa")
 
 require('dotenv').config();
 
@@ -14,19 +12,17 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 3000
 const entriesController = require('./controllers/entries.js')
-const db = mongoose.connection
-const DB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017'
 
 ///////////DATABASE CONNECT///////////
-
-mongoose.connect(MONGODB_URI, {
-    useUnifiedTopology: true,
+mongoose.connect('mongodb+srv://heroku_r5krpc15:diary@dear-diary.r6aqw.mongodb.net/heroku_r5krpc15?retryWrites=true&w=majority', {
     useNewUrlParser: true,
-    useCreateIndex: true
-})
-db.on('open', ()=> {
-    console.log('Connected to Mongo')
-})
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: true }
+)
+.then(()=> console.log('Connected to MongoDB Atlas'))
+.catch(err => console.log('Error: ', err.message));
+
 
 ///////////MIDDLEWARE///////////
 
